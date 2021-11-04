@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap">
+    <link rel="stylesheet" href="../css/fonts/fontawesome-free-5.15.4-web/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        let urlUser = `http://localhost:8080/api/`;
+        function login() {
+            let username = $("#username-login").val();
+            let password = $("#password-login").val();
+            let user = {
+                username: username,
+                password: password
+            }
+            $.ajax({
+                url: urlUser + "login",
+                type: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-type": "application/json"
+                },
+                data: JSON.stringify(user),
+                type: "POST",
+                success: function (data) {
+                    localStorage.setItem("user", JSON.stringify(data));
+                    for (let i = 0; i < data.roles.length; i++) {
+                        if (data.roles[i].authority == "ROLE_ADMIN") {
+                            window.location.href = "../index.html";
+                            return;
+                        } else {
+                            window.location.href = "../index.html"
+                        }
+                    }
+                }
+            }).fail(function () {
+                $("#error").html("Incorrect account or password");
+            })
+        }
+
+        function signIn() {
+            let name = $("#name").val();
+            let username = $("#username").val();
+            let email = $("#email").val();
+            let phone = $("#phone").val();
+            let address = $("#address").val();
+            let password = $("#password").val();
+            let user = {
+                name: name,
+                phone: phone,
+                email: email,
+                username: username,
+                password: password,
+                address: address
+            }
+            $.ajax({
+                url: urlUser + "register",
+                type: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-type": "application/json"
+                },
+                data: JSON.stringify(user),
+                success: function () {
+                    alert("thanh cong");
+                }
+            }).fail(function () {
+                alert("that bai");
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="container" class="container">
+    <!-- FORM SECTION -->
+    <div class="row">
+        <!-- SIGN UP -->
+        <div class="col align-items-center flex-col sign-up">
+            <div class="form-wrapper align-items-center">
+                <div class="form sign-up">
+                    <div class="input-group">
+                        <i class="far fa-user"></i>
+                        <input id="name" type="text" placeholder="Full name">
+                    </div>
+                    <div class="input-group">
+                        <i class='fa fa-user'></i>
+                        <input id="username" type="text" placeholder="Username">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input id="email" type="email" placeholder="Email">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-phone-square-alt"></i>
+                        <input id="phone" type="text" placeholder="Phone">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <input id="address" type="text" placeholder="Address">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-unlock"></i>
+                        <input id="password" type="password" placeholder="Password">
+                    </div>
+                    <button type="button" onclick="signIn()">Sign up</button>
+                    <p>
+                        <span>Already have an account?</span>
+                        <b onclick="toggle()" class="pointer">Sign in here</b>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <!-- END SIGN UP -->
+        <!-- SIGN IN -->
+        <div class="col align-items-center flex-col sign-in">
+            <div class="form-wrapper align-items-center">
+                <div class="form sign-in">
+                    <div class="input-group">
+                        <i class='fa fa-user'></i>
+                        <input id="username-login" type="text" placeholder="Username" >
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-unlock"></i>
+                        <input id="password-login" type="password" placeholder="Password">
+                    </div>
+                    <p id="error" style="color: red"></p>
+                    <button type="button" onclick="login()">Sign in</button>
+                    <p>
+                        <b>Forgot password?</b>
+                    </p>
+                    <p>
+                        <span>Don't have an account?</span>
+                        <b onclick="toggle()" class="pointer">
+                            Sign up here
+                        </b>
+                    </p>
+                </div>
+            </div>
+            <div class="form-wrapper">
+
+            </div>
+        </div>
+        <!-- END SIGN IN -->
+    </div>
+    <!-- END FORM SECTION -->
+    <!-- CONTENT SECTION -->
+    <div class="row content-row">
+        <!-- SIGN IN CONTENT -->
+        <div class="col align-items-center flex-col">
+            <div class="text sign-in">
+                <h2>
+                    Welcome
+                </h2>
+
+            </div>
+            <div class="img sign-in">
+
+            </div>
+        </div>
+        <!-- END SIGN IN CONTENT -->
+        <!-- SIGN UP CONTENT -->
+        <div class="col align-items-center flex-col">
+            <div class="img sign-up">
+
+            </div>
+            <div class="text sign-up">
+                <h2>
+                    Join with us
+                </h2>
+
+            </div>
+        </div>
+        <!-- END SIGN UP CONTENT -->
+    </div>
+    <!-- END CONTENT SECTION -->
+</div>
+
+<script>
+    let container = document.getElementById('container')
+
+    toggle = () => {
+        container.classList.toggle('sign-in')
+        container.classList.toggle('sign-up')
+    }
+
+    setTimeout(() => {
+        container.classList.add('sign-in')
+    }, 200)
+</script>
+</body>
+</html>
