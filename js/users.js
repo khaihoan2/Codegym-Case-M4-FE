@@ -1,6 +1,8 @@
 let userApi = "http://localhost:8080/api/users/"
 
-let userTablePage =
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+let userTablePageContent =
     `<!-- Content Wrapper. Contains page content -->
         <div class="wrapper">
             <!-- Content Header (Page header) -->
@@ -49,7 +51,7 @@ let userTablePage =
                                 </th>
                             </tr>
                             </thead>
-                            <tbody id="user-table">
+                            <tbody id="user-table-body">
                             
                             <!-- .......... -->
                             
@@ -65,17 +67,26 @@ let userTablePage =
         </div>
         <!-- /.content-wrapper -->`
 
-function showUserTable() {
-    $.getJSON(userApi, {}, function (users) {
-        let content = "";
-        for (let i = 0; i < users.length; i++) {
-            content += showUserRow(users[i]);
+function getAllUser() {
+    $.ajax({
+        url: userApi,
+        type: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + currentUser.
+        },
+        success: function (data){
+            let content = "";
+            for (let i = 0; i < data.length; i++) {
+                content += getUser(data[i]);
+            }
+            $("#user-table-body").html(content);
         }
-        $("#user-table").html(content);
+    }).fail(function (){
+        window.location.href = '/login/login.html';
     })
 }
 
-function showUserRow(user) {
+function getUser(user) {
     return `<tr>
             <td>${user.id}</td>
             <td>${user.name}</td>
@@ -101,7 +112,7 @@ function showUserRow(user) {
         </tr>`;
 }
 
-function createUser() {
+function saveUser() {
     let myModal = new bootstrap.Modal($("#modalCreate"));
     $("#name").val("");
     $("#content").val("");
@@ -111,10 +122,6 @@ function createUser() {
 }
 
 function viewUser() {
-
-}
-
-function editUser() {
 
 }
 
