@@ -12,6 +12,8 @@ let urlBooking = `http://localhost:8080/api/bookings/`
 
 let pageNumber = 0;
 
+let checkPageNumber = true;
+
 let user = JSON.parse(localStorage.getItem("user"));
 
 function showImgAvartar() {
@@ -167,25 +169,29 @@ function searchRoomHotel(page) {
             "Content-type": "application/json"
         },
         success: function (data) {
-            localStorage.setItem("listRoom", JSON.stringify(data));
-            if (page == 0) {
-                $("#showListRoom").html("");
+            if (data.length == 0) {
+                checkPageNumber = false;
+            } else {
+                $("#footer").hide();
+                localStorage.setItem("listRoom", JSON.stringify(data));
+                if (page == 0) {
+                    $("#showListRoom").html("");
+                }
+                showListRoom();
             }
-            showListRoom();
         }
-    }).fail(function () {
-        pageNumber = 0;
     });
 }
 
 $(document).ready(function(){
-    $("#footer").hide();
     $(window).scroll(function(){
-        console.log(pageNumber);
-        console.log($(window).scrollTop());
-        console.log($(document).height()-$(window).height());
         if($(window).scrollTop() >= $(document).height()-$(window).height() - 1){
-            searchRoomHotel(pageNumber += 1);
+            if (checkPageNumber) {
+                searchRoomHotel(pageNumber += 1);
+            } else {
+                $("#footer").show();
+                pageNumber = 0;
+            }
         }
     });
 });
