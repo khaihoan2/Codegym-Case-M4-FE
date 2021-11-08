@@ -1,5 +1,4 @@
 
-
 function roomInfo(id) {
     var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
     $.ajax({

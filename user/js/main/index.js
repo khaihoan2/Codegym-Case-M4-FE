@@ -4,7 +4,40 @@ let urlCity = 'http://localhost:8080/api/city/'
 
 let urlRoom = `http://localhost:8080/api/rooms/`
 
+let urlImage = `http://localhost:8080/api/images/room/`
+
+let urlReview = `http://localhost:8080/api/reviews/`
+
+let urlBooking = `http://localhost:8080/api/bookings/`
+
 let user = JSON.parse(localStorage.getItem("user"));
+
+function showUser() {
+    $(document).ready(function () {
+        if (user == null) {
+            $("#showLoginAndRegister").html(`<a id="loginAndRegister" onclick="showLoginAndRegister()" style="color: #fff">Login/Register</a>`);
+            $("#logout").hide();
+        } else {
+            $("#showLoginAndRegister").html(`<a id="loginAndRegister" onclick="showListBookingHistory()" style="color: #fff"><i class="fas fa-user"></i>${user.name}</a>`);
+            $("#logout").show();
+        }
+    })
+}
+
+showUser();
+
+$(document).ready(function () {
+    $("#logout").click(function () {
+        localStorage.clear();
+        user = localStorage.getItem("user");
+        showUser();
+    })
+})
+
+function showLoginAndRegister() {
+    window.location.href = "http://localhost:63343/Codegym-Case-M4-FE/user/login/login.html";
+}
+
 
 function category(category) {
     let content = `<option value="${category.id}">${category.name}</option>`;
@@ -77,8 +110,7 @@ function showRoomRating(roomRating, cityName) {
 
                                 <div class="real-estate-item-desc">
                                     <h3>${cityName}</h3>
-                                    <span>Seminyak Area</span>
-
+                                    <p><span>${roomRating.address}</span></p>
                                     <a href="#" class="real-estate-item-link"><i class="icon-info"></i></a>
 
                                     <div class="line" style="margin-top: 15px; margin-bottom: 15px;"></div>
@@ -136,14 +168,127 @@ function showTopRoomRating() {
 
 showTopRoomRating();
 
-function searchRoomArea() {
-    let city = $("#homestayLocation").val();
-    let category = $("#homestayCategory").val();
-    let beg = $("#homestayBed").val();
-    let bath = $("#homestayBath").val();
-    let priceLow = $('#priceHomestay').data().from;
-    let priceHigh = $('#priceHomestay').data().to;
-    let areaLow = $("#areaHomestay").data().from;
-    let areaHigh = $("#areaHomestay").data().to;
+
+
+function roomInfo(id) {
+    var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+    $.ajax({
+        url: urlImage + id,
+        type: "GET",
+        headers: {
+            "Authorization": "Bearer " + user.token,
+            "Accept": "application/json",
+            "Content-type": "application/json"
+        },
+        success: function (data) {
+            $("#roomId").val(id);
+            let content = "";
+            for (let i = 0; i < data.length; i++) {
+                if (i == 0) {
+                    content += `<div class="carousel-item active">
+                    <img src="demos/real-estate/images/items/${data[i].name}" class="d-block w-100">
+                    </div>`
+                } else {
+                    content += `<div class="carousel-item">
+                    <img src="demos/real-estate/images/items/${data[i].name}" class="d-block w-100">
+                    </div>`
+                }
+                $("#roomCityName").html(`<i class="fas fa-caravan mr-2" style="color: #1abc9c"></i>${data[i].room.city.name}`);
+                $("#priceRoom").html(data[i].room.price)
+            };
+            $("#showListImageRoom").html(content);
+            $.ajax({
+                url: urlReview + `rating/${id}`,
+                type: "GET",
+                headers: {
+                    "Authorization": "Bearer " + user.token,
+                    "Accept": "application/json",
+                    "Content-type": "application/json"
+                },
+                success: function (result) {
+                    $("#roomRating").html(result.avg);
+                    $("#roomRatingCount").html(result.count)
+                }
+            })
+        }
+    });
+    myModal.show();
+}
+
+function showBookingRoom() {
+    var myModal = new bootstrap.Modal(document.getElementById('bookingRoom'))
+    myModal.show();
+}
+
+$(document).ready(function(){
+    $("#adults").blur(function(){
+        let adults = $("#adults").val();
+        let checkIn = $("#checkin").val();
+        let checkOut = $("#checkout").val();
+        if (adults == "" || adults < 0) {
+            $(this).css("border-color", "red");
+        } else {
+            $(this).css("border-color", "#ccc");
+        }
+        if (adults != "" && adults > 0 && checkIn != "" && checkOut != "") {
+            $("#buttonCreateBookingRoom").removeClass("disabled");
+        }
+    });
+    $("#checkin").blur(function(){
+        let adults = $("#adults").val();
+        let checkIn = $("#checkin").val();
+        let checkOut = $("#checkout").val();
+        if (checkIn == "") {
+            $(this).css("border-color", "red");
+        } else {
+            $(this).css("border-color", "#ccc");
+        }
+        if (adults != "" && adults > 0 && checkIn != "" && checkOut != "") {
+            $("#buttonCreateBookingRoom").removeClass("disabled");
+        }
+    });
+    $("#checkout").blur(function(){
+        let adults = $("#adults").val();
+        let checkIn = $("#checkin").val();
+        let checkOut = $("#checkout").val();
+        if (checkOut == "") {
+            $(this).css("border-color", "red");
+        } else {
+            $(this).css("border-color", "#ccc");
+        }
+        if (adults != "" && adults > 0 && checkIn != "" && checkOut != "") {
+            $("#buttonCreateBookingRoom").removeClass("disabled");
+        }
+    });
+});
+
+function createBookingRoom() {
+    let adults = $("#adults").val();
+    let children = $("#children").val();
+    let checkIn = $("#checkin").val();
+    let checkOut = $("#checkout").val();
+    let roomId = $("#roomId").val();
+    let booking = {
+        adults: adults,
+        children: children,
+        checkIn: checkIn,
+        checkOut: checkOut,
+        room: {
+            id: roomId
+        }
+    }
+    $.ajax({
+        url: urlBooking,
+        type: "POST",
+        headers: {
+            "Authorization": "Bearer " + user.token,
+            "Accept": "application/json",
+            "Content-type": "application/json"
+        },
+        data: JSON.stringify(booking),
+        success: function (bookingRoom) {
+            showRoomRating();
+        }
+    })
 }
 
