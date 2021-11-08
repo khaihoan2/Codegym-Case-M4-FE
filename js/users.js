@@ -1,6 +1,10 @@
-let userApi = "http://localhost:8080/api/users/"
+let userApi = "http://localhost:8080/api/users/";
 
-let userTablePage =
+let uploadingFileApi = "http://localhost:8080/api/uploadingFiles/";
+
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+let userTablePageContent =
     `<!-- Content Wrapper. Contains page content -->
         <div class="wrapper">
             <!-- Content Header (Page header) -->
@@ -49,7 +53,7 @@ let userTablePage =
                                 </th>
                             </tr>
                             </thead>
-                            <tbody id="user-table">
+                            <tbody id="user-table-body">
                             
                             <!-- .......... -->
                             
@@ -65,17 +69,26 @@ let userTablePage =
         </div>
         <!-- /.content-wrapper -->`
 
-function showUserTable() {
-    $.getJSON(userApi, {}, function (users) {
-        let content = "";
-        for (let i = 0; i < users.length; i++) {
-            content += showUserRow(users[i]);
+function getAllUser() {
+    $.ajax({
+        url: userApi,
+        type: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + currentUser.jwt,
+        },
+        success: function (data){
+            let content = "";
+            for (let i = 0; i < data.length; i++) {
+                content += getUser(data[i]);
+            }
+            $("#user-table-body").html(content);
         }
-        $("#user-table").html(content);
+    }).fail(function (){
+        window.location.href = '/login/login.html';
     })
 }
 
-function showUserRow(user) {
+function getUser(user) {
     return `<tr>
             <td>${user.id}</td>
             <td>${user.name}</td>
@@ -101,23 +114,31 @@ function showUserRow(user) {
         </tr>`;
 }
 
-function createUser() {
-    let myModal = new bootstrap.Modal($("#modalCreate"));
+function showCreateForm() {
+    let myModal = new bootstrap.Modal($("#modal-user-create"));
     $("#name").val("");
-    $("#content").val("");
+    $("#phone").val("");
+    $("#username").val("");
+    $("#password").val("");
+    $("#email").val("");
+    $("#address").val("");
     $("#multipartFiles").val("");
     $("#checkCreateOrEdit").val("create");
     myModal.show();
 }
 
-function viewUser() {
-
-}
-
-function editUser() {
-
-}
-
-function deleteUser() {
-
+function showEditForm(id){
+    let myModal = new bootstrap.Modal($('#modal-user-create'));
+    $("#checkCreateOrEdit").val(id);
+    $.getJSON(userApi + id, {}, function (user){
+        $("#name").val(user.name);
+        $("#phone").val(user.phone);
+        $("#username").val(user.username);
+        $("#password").val(user.password);
+        $("#email").val(user.email);
+        $("#address").val(user.address);
+        $("#multipartFiles").val("");
+        $("#checkCreateOrEdit").val("create");
+        myModal.show();
+    })
 }
