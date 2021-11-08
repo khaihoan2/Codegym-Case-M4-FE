@@ -4,7 +4,7 @@ let urlCity = 'http://localhost:8080/api/city/'
 
 let urlRoom = `http://localhost:8080/api/rooms/`
 
-let urlImage = `http://localhost:8080/api/images/room/`
+let urlImage = `http://localhost:8080/api/uploading-files/room/`
 
 let urlReview = `http://localhost:8080/api/reviews/`
 
