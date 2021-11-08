@@ -12,9 +12,32 @@ let urlBooking = `http://localhost:8080/api/bookings/`
 
 let pageNumber = 0;
 
-let checkPageNumber = true;
-
 let user = JSON.parse(localStorage.getItem("user"));
+
+function showUser() {
+    $(document).ready(function () {
+        if (user == null) {
+            $("#showLoginAndRegister").html(`<a id="loginAndRegister" onclick="showLoginAndRegister()" style="color: #fff">Login/Register</a>`);
+            $("#logout").hide();
+        } else {
+            $("#logout").show();
+        }
+    })
+}
+
+showUser();
+
+$(document).ready(function () {
+    $("#logout").click(function () {
+        localStorage.clear();
+        user = localStorage.getItem("user");
+        showUser();
+    })
+})
+
+function showLoginAndRegister() {
+    window.location.href = "http://localhost:63343/Codegym-Case-M4-FE/user/login/login.html";
+}
 
 function showImgAvartar() {
     if (user != null) {
@@ -113,7 +136,7 @@ function showRoom(room) {
 <div class="real-estate-item-desc p-0">
 <h3>${room.city.name}</h3>
 <p>
-<span>Seminyak Area</span>d
+<span>Seminyak Area</span>
 </p>
 <a href="#" class="real-estate-item-link"><i class="icon-info"></i></a>
 <div class="line" style="margin-top: 15px; margin-bottom: 15px;"></div>
@@ -137,13 +160,18 @@ function showListRoom() {
         content += showRoom(rooms[i]);
     }
     $(document).ready(function () {
-        $("#showListRoom").append(content)
+        if (pageNumber == 0) {
+            $("#showListRoom").html(content);
+        } else {
+            $("#showListRoom").append(content);
+        }
     })
 }
 
 showListRoom();
 
 function searchRoomHotel(page) {
+    pageNumber = page;
     let city = $("#hotelLocation").val();
     let category = $("#hotelCategory").val();
     let beg = $("#hotelBed").val();
@@ -169,28 +197,26 @@ function searchRoomHotel(page) {
             "Content-type": "application/json"
         },
         success: function (data) {
-            if (data.length == 0) {
-                checkPageNumber = false;
-            } else {
-                $("#footer").hide();
-                localStorage.setItem("listRoom", JSON.stringify(data));
-                if (page == 0) {
-                    $("#showListRoom").html("");
-                }
+            localStorage.setItem("listRoom", JSON.stringify(data));
+            if (data.length != 0) {
                 showListRoom();
+            } else if (pageNumber == 0) {
+                $("#showListRoom").html(`<h1>Not found home stay</h1>`);
             }
         }
     });
 }
 
 $(document).ready(function(){
+    $("#footer").hide();
+});
+
+$(document).ready(function(){
     $(window).scroll(function(){
         if($(window).scrollTop() >= $(document).height()-$(window).height() - 1){
-            if (checkPageNumber) {
+            let rooms = JSON.parse(localStorage.getItem("listRoom"));
+            if (rooms.length != 0) {
                 searchRoomHotel(pageNumber += 1);
-            } else {
-                $("#footer").show();
-                pageNumber = 0;
             }
         }
     });
