@@ -69,6 +69,8 @@ let userTablePageContent =
         </div>
         <!-- /.content-wrapper -->`
 
+
+
 function getAllUser() {
     $.ajax({
         url: userApi,
@@ -76,17 +78,18 @@ function getAllUser() {
         headers: {
             'Authorization': 'Bearer ' + currentUser.jwt,
         },
-        success: function (data){
+        success: function (data) {
             let content = "";
             for (let i = 0; i < data.length; i++) {
                 content += getUser(data[i]);
             }
             $("#user-table-body").html(content);
         }
-    }).fail(function (){
+    }).fail(function () {
         window.location.href = '/login/login.html';
     })
 }
+
 
 function getUser(user) {
     return `<tr>
@@ -127,10 +130,10 @@ function showCreateForm() {
     myModal.show();
 }
 
-function showEditForm(id){
+function showEditForm(id) {
     let myModal = new bootstrap.Modal($('#modal-user-create'));
     $("#checkCreateOrEdit").val(id);
-    $.getJSON(userApi + id, {}, function (user){
+    $.getJSON(userApi + id, {}, function (user) {
         $("#name").val(user.name);
         $("#phone").val(user.phone);
         $("#username").val(user.username);
@@ -141,4 +144,38 @@ function showEditForm(id){
         $("#checkCreateOrEdit").val("create");
         myModal.show();
     })
+
+//--------------Create and Edit-------------//
+    function createAndEditUser(type, url) {
+        let name = $("#name").val();
+        let phone = $("#phone").val();
+        let username = $("#username").val();
+        let password = $("#password").val();
+        let email = $("#email").val();
+        let address = $("#address").val();
+    }
+
+    $.ajax({
+        url: url,
+        type: type,
+        headers: {
+            "Accept": "application/json",
+            "Content-type": "application/json"
+        },
+        data: JSON.stringify(user),
+        success: function (result) {
+
+        }
+    })
+}
+//-------------------Delete------------------//
+function showDeleteForm(id) {
+    $.ajax({
+        url: userApi + id,
+        type: "DELETE",
+        success: function (result) {
+
+        }
+    })
+
 }
