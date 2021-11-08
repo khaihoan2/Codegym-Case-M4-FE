@@ -1,4 +1,6 @@
-let userApi = "http://localhost:8080/api/users/"
+let userApi = "http://localhost:8080/api/users/";
+
+let uploadingFileApi = "http://localhost:8080/api/uploadingFiles/";
 
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
@@ -72,7 +74,7 @@ function getAllUser() {
         url: userApi,
         type: 'GET',
         headers: {
-            'Authorization': 'Bearer ' + currentUser.
+            'Authorization': 'Bearer ' + currentUser.jwt,
         },
         success: function (data){
             let content = "";
@@ -112,19 +114,31 @@ function getUser(user) {
         </tr>`;
 }
 
-function saveUser() {
-    let myModal = new bootstrap.Modal($("#modalCreate"));
+function showCreateForm() {
+    let myModal = new bootstrap.Modal($("#modal-user-create"));
     $("#name").val("");
-    $("#content").val("");
+    $("#phone").val("");
+    $("#username").val("");
+    $("#password").val("");
+    $("#email").val("");
+    $("#address").val("");
     $("#multipartFiles").val("");
     $("#checkCreateOrEdit").val("create");
     myModal.show();
 }
 
-function viewUser() {
-
-}
-
-function deleteUser() {
-
+function showEditForm(id){
+    let myModal = new bootstrap.Modal($('#modal-user-create'));
+    $("#checkCreateOrEdit").val(id);
+    $.getJSON(userApi + id, {}, function (user){
+        $("#name").val(user.name);
+        $("#phone").val(user.phone);
+        $("#username").val(user.username);
+        $("#password").val(user.password);
+        $("#email").val(user.email);
+        $("#address").val(user.address);
+        $("#multipartFiles").val("");
+        $("#checkCreateOrEdit").val("create");
+        myModal.show();
+    })
 }
