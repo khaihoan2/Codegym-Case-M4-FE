@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="SemiColonWeb"/>
+
+    <!-- Stylesheets
+    ============================================= -->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i|Roboto:300,400,500,700|Rubik:400,600&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <link rel="stylesheet" href="css/dark.css" type="text/css"/>
+
+    <!-- Real Estate Demo Specific Stylesheet -->
+    <link rel="stylesheet" href="demos/real-estate/real-estate.css" type="text/css"/>
+    <link rel="stylesheet" href="demos/real-estate/css/font-icons.css" type="text/css"/>
+    <!-- / -->
+
+    <link rel="stylesheet" href="css/font-icons.css" type="text/css"/>
+    <link rel="stylesheet" href="css/animate.css" type="text/css"/>
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css"/>
+
+    <link rel="stylesheet" href="demos/real-estate/fonts.css" type="text/css"/>
+
+    <!-- Bootstrap Select CSS -->
+    <link rel="stylesheet" href="css/components/bs-select.css" type="text/css"/>
+
+    <!-- Bootstrap Switch CSS -->
+    <link rel="stylesheet" href="css/components/bs-switches.css" type="text/css"/>
+
+    <!-- Range Slider CSS -->
+    <link rel="stylesheet" href="css/components/ion.rangeslider.css" type="text/css"/>
+
+    <link rel="stylesheet" href="css/custom.css" type="text/css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="css/colors.php?color=2C3E50" type="text/css"/>
+
+    <!-- Document Title
+    ============================================= -->
+    <title>Listing - Real Estate | Canvas</title>
+
+    <style>
+        .slider-element {
+            padding: 250px 0 150px;
+        }
+
+        .device-md .slider-element,
+        .device-sm .slider-element,
+        .device-xs .slider-element {
+            padding: 60px 0;
+        }
+
+        .expand-link {
+            display: none;
+        }
+
+        .more-search {
+            display: block;
+            margin-top: 10px;
+            float: right;
+            text-align: right;
+            color: #FFF;
+            cursor: pointer;
+        }
+
+        label {
+            font-family: 'Lora', sans-serif !important;
+        }
+
+        .bootstrap-select.btn-group > .dropdown-toggle {
+            background-color: #dae0e5;
+            border-color: #d3d9df;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/main/list.js"></script>
+    <link rel="stylesheet" href="css/fonts/fontawesome-free-5.15.4-web/css/all.min.css">
+    <script src="js/main/bookingRoom.js"></script>
+
+</head>
+
+<body class="stretched side-push-panel">
+
+<div id="side-panel">
+    <div id="side-panel-trigger-close" class="side-panel-trigger"><a href="#"><i class="icon-line-cross"></i></a></div>
+
+    <div class="side-panel-wrap">
+        <div class="widget clearfix">
+            <div id="imageAvatar">
+
+            </div>
+            <h4 class="font-weight-normal">BOOKING HISTORY</h4>
+            <br>
+            <p>Present</p>
+            <div id="bookingPresent">
+
+            </div>
+            <hr>
+            <p>Past</p>
+            <div id="bookingPast">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Document Wrapper
+============================================= -->
+<div id="wrapper" class="clearfix">
+
+    <!-- Top Bar
+    ============================================= -->
+    <div id="top-bar" class="transparent-topbar border-bottom-0">
+        <div class="container clearfix">
+
+            <div class="row justify-content-between">
+                <div class="col-12 col-md-auto">
+
+                    <!-- Top Links
+                    ============================================= -->
+                    <div class="top-links">
+                        <ul class="top-links-container">
+                            <li class="top-links-item"><a href="#">All Cities</a>
+                                <ul class="top-links-sub-menu">
+                                    <li class="top-links-item"><a href="#">New York</a></li>
+                                    <li class="top-links-item"><a href="#">Los Angeles</a></li>
+                                    <li class="top-links-item"><a href="#">California</a></li>
+                                    <li class="top-links-item"><a href="#">Miami</a></li>
+                                    <li class="top-links-item"><a href="#">Las Vegas</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!-- .top-links end -->
+
+                </div>
+
+                <div class="col-12 col-md-auto">
+
+                    <!-- Top Links
+                    ============================================= -->
+                    <div class="top-links">
+                        <ul class="top-links-container">
+                            <li class="top-links-item d-md-none d-lg-block"><a href="#"><i class="icon-call"></i>
+                                +1800-123-7890</a></li>
+                            <li class="top-links-item"><a href="#"><i class="icon-download-alt"></i> Download App</a>
+                            </li>
+                            <li class="top-links-item top-bar-highlight"><a href="#">Sell/Rent your Property</a>
+                                <div class="top-links-section" style="font-size: 14px;">
+                                    Genuine Clients, 100% Trust Assurance and Lowest Fees on the Market. <a href="#"
+                                                                                                            class="more-link font-secondary"
+                                                                                                            style="border-bottom-style: dotted;">Learn
+                                    More &rarr;</a>
+                                </div>
+                            </li>
+                            <li class="top-links-item" style="cursor: pointer">
+                                <a id="loginAndRegister" onclick="showListBookingHistory()"></a>
+                            </li>
+                        </ul>
+                    </div><!-- .top-links end -->
+
+                </div>
+            </div>
+
+        </div>
+    </div><!-- #top-bar end -->
+
+    <!-- Header
+    ============================================= -->
+    <header id="header" class="transparent-header dark header-size-md" data-sticky-shrink="false">
+        <div id="header-wrap">
+            <div class="container">
+                <div class="header-row">
+
+                    <!-- Logo
+                    ============================================= -->
+                    <div id="logo">
+                        <a href="index.html" data-dark-logo="demos/real-estate/images/logo.png"
+                           class="standard-logo"><img src="demos/real-estate/images/logo.png" alt="Canvas Logo"></a>
+                        <a href="index.html" data-dark-logo="demos/real-estate/images/logo@2x.png"
+                           class="retina-logo"><img src="demos/real-estate/images/logo@2x.png" alt="Canvas Logo"></a>
+                    </div><!-- #logo end -->
+
+                    <div id="primary-menu-trigger">
+                        <svg class="svg-trigger" viewBox="0 0 100 100">
+                            <path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path>
+                            <path d="m 30,50 h 40"></path>
+                            <path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path>
+                        </svg>
+                    </div>
+
+                    <!-- Primary Navigation
+                    ============================================= -->
+                    <nav class="primary-menu with-arrows">
+
+                        <ul class="menu-container">
+                            <li class="menu-item current"><a class="menu-link" href="htmlDrop/demo-real-estate.html">
+                                <div>Home</div>
+                            </a></li>
+                            <li class="menu-item"><a class="menu-link" href="demo-real-estate-about-us.html">
+                                <div>About Us</div>
+                            </a></li>
+                            <li class="menu-item"><a class="menu-link" href="#">
+                                <div>Properties</div>
+                            </a>
+                                <ul class="sub-menu-container">
+                                    <li class="menu-item"><a class="menu-link"
+                                                             href="demo-real-estate-single-property.html">
+                                        <div>Condo Apartments</div>
+                                    </a></li>
+                                    <li class="menu-item"><a class="menu-link"
+                                                             href="demo-real-estate-single-property.html">
+                                        <div>Luxury Villas</div>
+                                    </a></li>
+                                    <li class="menu-item"><a class="menu-link"
+                                                             href="demo-real-estate-single-property.html">
+                                        <div>Premium Estates</div>
+                                    </a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item"><a class="menu-link" href="demo-real-estate-builders.html">
+                                <div>Builders</div>
+                            </a></li>
+                            <li class="menu-item"><a class="menu-link" href="demo-real-estate-services.html">
+                                <div>Services</div>
+                            </a></li>
+                            <li class="menu-item"><a class="menu-link" href="list.html">
+                                <div>Listing</div>
+                            </a></li>
+                            <li class="menu-item"><a class="menu-link" href="demo-real-estate-contact.html">
+                                <div>Contact</div>
+                            </a></li>
+                        </ul>
+
+                    </nav><!-- #primary-menu end -->
+
+                </div>
+            </div>
+        </div>
+        <div class="header-wrap-clone"></div>
+    </header><!-- #header end -->
+
+    <!-- Slider
+    ============================================= -->
+    <section id="slider" class="slider-element include-header include-topbar"
+             style="background: url('demos/real-estate/images/items/page-title.jpg') center center no-repeat; background-size: cover; overflow: visible;">
+
+        <div class="container" style="z-index: 2">
+            <div class="tabs advanced-real-estate-tabs">
+
+                <div class="tab-container">
+
+                    <div class="tab-content clearfix" id="tab-properties">
+                        <form action="#" method="post" class="mb-0">
+                            <div class="row clearfix">
+                                <div class="col-md-2 col-sm-12">
+                                    <label class="d-block">Type</label>
+                                    <input class="bt-switch" type="checkbox" checked data-on-text="Hotel"
+                                           data-off-text="Home" data-on-color="themecolor" data-off-color="themecolor">
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-12">
+                                    <label>Locations</label>
+                                    <select id="hotelLocation" class="form-select showCity" style="width:100%; line-height: 22px;">
+
+                                    </select>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-12">
+                                    <label>Category</label>
+                                    <select id="hotelCategory" class="form-select showCategory" style="width:100%; line-height: 22px;">
+
+                                    </select>
+                                </div>
+                                <div class="col-md-2 col-sm-6 col-6">
+                                    <button class="button button-3d button-rounded btn-block m-0" type="button"
+                                            style="margin-top: 29px !important;" onclick="searchRoomHotel(0)">Search
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+
+                            <div class="expand-link">
+                                <div class="row justify-content-between mt-3">
+                                    <div class="col-md-4 col-sm-6 col-12">
+                                        <label style="margin-bottom: 20px !important;">Price Range</label>
+                                        <input id="priceHotel" class="price-range-slider"/>
+                                    </div>
+                                    <div class="clear d-xl-none d-lg-none d-md-none d-sm-none bottommargin-sm"></div>
+                                    <div class="col-md-4 col-sm-6 col-12">
+                                        <label style="margin-bottom: 20px !important;">Property Area</label>
+                                        <input id="areaHotel" class="area-range-slider"/>
+                                    </div>
+                                    <div class="col-md-2 col-sm-6 bottommargin-sm">
+                                        <label>Beds</label>
+                                        <select id="hotelBed" class="selectpicker form-control" data-placeholder="Any"
+                                                style="width:100%; line-height: 30px;">
+                                            <option value="">Any</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5+">5+</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 col-sm-6 bottommargin-sm">
+                                        <label id="hotelBath">Baths</label>
+                                        <select class="selectpicker form-control" data-placeholder="Any"
+                                                style="width:100%; line-height: 30px;">
+                                            <option value="">Any</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5+">5+</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <span class="more-search"><i class="icon-line-plus"></i> Advanced Search</span>
+            </div>
+        </div>
+        <div class="video-wrap" style="position: absolute; top: 0; left: 0; height: 100%; z-index:1;">
+            <div class="video-overlay" style="background: rgba(0,0,0,0.3); z-index: 1;"></div>
+        </div>
+
+    </section><!-- #slider end -->
+
+    <!-- Content
+    ============================================= -->
+    <section id="content">
+        <div class="content-wrap pt-0">
+
+            <div class="section bg-transparent m-0 clearfix">
+                <div class="container clearfix">
+                    <div class="row justify-content-between">
+                        <div class="col-4">
+                            <a href="#" class="btn text-white bg-color px-4"><i class="icon-line2-list"></i> List</a>
+                            <a href="#" class="btn btn-light ml-2 px-4"><i class="icon-map-marker2"></i> Map</a>
+                        </div>
+                        <div class="col-8 text-right">
+
+                            <div class="btn-group">
+                                <div class="dropdown">
+                                    <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">All Listing
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <button class="dropdown-item" type="button">New Listing</button>
+                                        <button class="dropdown-item" type="button">Home Opens</button>
+                                    </div>
+                                </div>
+                                <div class="dropdown ml-2">
+                                    <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">Popular Listed
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <button class="dropdown-item" type="button">A - Z Listed</button>
+                                        <button class="dropdown-item" type="button">Price: Lowest First</button>
+                                        <button class="dropdown-item" type="button">Price: Highest First</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="showListRoom" class="real-estate mt-5 container row portfolio gutter-20 col-mb-50"
+                         data-layout="fitRows">
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="container clearfix">
+                <div class="section center m-0" style="padding:80px 0 ">
+                    <h3 class="font-weight-normal ls1">Special Offers on Villa Long Term Rentals &amp; Lease
+                        Agreements</h3>
+                    <a href="contact.html" class="button button-color button-large button-rounded">Contact Now</a>
+                </div>
+            </div>
+        </div><!-- .content-wrap end -->
+    </section><!-- #content end -->
+
+    <!-- Footer
+    ============================================= -->
+    <footer id="footer" class="dark" >
+        <div class="container">
+            <!-- Footer Widgets
+            ============================================= -->
+            <div class="footer-widgets-wrap">
+
+                <div class="row col-mb-50">
+                    <div class="col-lg-5 order-last order-lg-first">
+
+                        <div class="widget clearfix">
+
+                            <img src="demos/real-estate/images/logo@2x.png"
+                                 style="position: relative; opacity: 0.85; left: -10px; max-height: 80px; margin-bottom: 20px;"
+                                 alt="Footer Logo">
+
+                            <p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp;
+                                <strong>Flexible</strong> Design Standards with a Retina &amp; Responsive Approach.
+                                Browse the amazing Features this template offers.</p>
+
+                            <div class="line" style="margin: 30px 0;"></div>
+
+                            <p class="ls1 font-weight-light" style="opacity: 0.6; font-size: 13px;">Copyrights &copy;
+                                2020 Canvas: Real Estate</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-7">
+
+                        <div class="row col-mb-50">
+                            <div class="col-md-6">
+                                <h4 class="ls1 font-weight-normal text-uppercase">Popular Locations</h4>
+
+                                <div class="row">
+                                    <div class="col-6 bottommargin-sm widget_links widget_real_estate_popular">
+                                        <ul>
+                                            <li><a href="#">California</a></li>
+                                            <li><a href="#">Nevada</a></li>
+                                            <li><a href="#">Hawaii</a></li>
+                                            <li><a href="#">Washington</a></li>
+                                            <li><a href="#">Ottawa</a></li>
+                                            <li><a href="#">Virginia</a></li>
+                                            <li><a href="#">Ohio</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-6 bottommargin-sm widget_links widget_real_estate_popular">
+                                        <ul>
+                                            <li><a href="#">Oregon</a></li>
+                                            <li><a href="#">Colorado</a></li>
+                                            <li><a href="#">Kentucky</a></li>
+                                            <li><a href="#">Texas</a></li>
+                                            <li><a href="#">Miami</a></li>
+                                            <li><a href="#">New York</a></li>
+                                            <li><a href="#">New Jersey</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h4 class="ls1 font-weight-normal text-uppercase">Connect Socially</h4>
+
+                                <div class="bottommargin-sm clearfix">
+                                    <a href="#" class="social-icon si-colored si-small si-rounded si-facebook"
+                                       title="Facebook">
+                                        <i class="icon-facebook"></i>
+                                        <i class="icon-facebook"></i>
+                                    </a>
+
+                                    <a href="#" class="social-icon si-colored si-small si-rounded si-twitter"
+                                       title="Twitter">
+                                        <i class="icon-twitter"></i>
+                                        <i class="icon-twitter"></i>
+                                    </a>
+
+                                    <a href="#" class="social-icon si-colored si-small si-rounded si-instagram"
+                                       title="Instagram">
+                                        <i class="icon-instagram"></i>
+                                        <i class="icon-instagram"></i>
+                                    </a>
+
+                                    <a href="#" class="social-icon si-colored si-small si-rounded si-apple"
+                                       title="App Store">
+                                        <i class="icon-apple"></i>
+                                        <i class="icon-apple"></i>
+                                    </a>
+
+                                    <a href="#" class="social-icon si-colored si-small si-rounded si-android"
+                                       title="Play Store">
+                                        <i class="icon-android"></i>
+                                        <i class="icon-android"></i>
+                                    </a>
+
+                                    <a href="#" class="social-icon si-colored si-small si-rounded si-skype"
+                                       title="Skype">
+                                        <i class="icon-skype"></i>
+                                        <i class="icon-skype"></i>
+                                    </a>
+                                </div>
+
+                                <div class="widget subscribe-widget subscribe-form clearfix" data-loader="button">
+                                    <div class="widget-subscribe-form-result"></div>
+                                    <form action="include/subscribe.php" method="post" class="mb-0">
+                                        <input type="email" id="widget-subscribe-form-email"
+                                               name="widget-subscribe-form-email"
+                                               class="sm-form-control not-dark required email"
+                                               placeholder="Enter your Email">
+                                        <button class="button button-3d button-black mx-0" style="margin-top: 15px;"
+                                                type="submit">Subscribe
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div><!-- .footer-widgets-wrap end -->
+        </div>
+    </footer><!-- #footer end -->
+
+</div><!-- #wrapper end -->
+
+<!-- Go To Top
+============================================= -->
+<div id="gotoTop" class="icon-angle-up"></div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">HOMESTAY</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div id="showListImageRoom" class="carousel-inner">
+
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex">
+                    <div class="col-8">
+                        <h3 id="roomCityName" style="color: #1abc9c"></h3>
+                        <div style="color: #1abc9c">
+                            <span class="mr-2">
+                                <i class="far fa-star"></i>
+                                Rating:
+                            </span>
+                            <span id="roomRating"></span>
+                            <p style="color: #000">
+                                reviewed by <span id="roomRatingCount"></span> travelers</p>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <h3 style="text-align: right; opacity: 0.7">Price</h3>
+                        <h2 id="priceRoom" style="text-align: right"></h2>
+                        <p style="text-align: right; color: #1abc9c">/Room/Night</p>
+                        <p style="text-align: right">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                    style="width: 100%; background-color: #1abc9c; border: none" onclick="showBookingRoom()">
+                                Book room
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal create Booking Room-->
+<div class="modal fade" id="bookingRoom" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <input id="roomId" type="text" hidden>
+    <div class="modal-dialog modal-xl modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">BOOKING ROOM</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container row">
+                    <div class="mb-3 col-6">
+                        <label class="form-label">Number of adults</label>
+                        <input type="number" class="form-control" id="adults">
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label class="form-label">Number of children</label>
+                        <input type="number" class="form-control" id="children">
+                    </div>
+                </div>
+                <div class="container row">
+                    <div class="mb-3 col-6">
+                        <label class="form-label">Check in</label>
+                        <input type="date" class="form-control" id="checkin">
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label class="form-label">Check out</label>
+                        <input type="date" class="form-control" id="checkout">
+                    </div>
+                </div>
+                <button id="buttonCreateBookingRoom" type="submit" class="btn disabled" style="width: 100%; background-color: #1abc9c" data-bs-dismiss="modal" onclick="createBookingRoom()">Booking</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- JavaScripts
+============================================= -->
+<script src="js/jquery.js"></script>
+<script src="js/plugins.min.js"></script>
+
+<!-- Bootstrap Select Plugin -->
+<script src="js/components/bs-select.js"></script>
+
+<!-- Bootstrap Switch Plugin -->
+<script src="js/components/bs-switches.js"></script>
+
+<!-- Range Slider Plugin -->
+<script src="js/components/rangeslider.min.js"></script>
+
+<!-- Footer Scripts
+============================================= -->
+<script src="js/functions.js"></script>
+
+<script>
+
+    jQuery(document).ready(function () {
+
+        $(".price-range-slider").ionRangeSlider({
+            type: "double",
+            prefix: "$",
+            min: 200,
+            max: 10000,
+            max_postfix: "+"
+        });
+
+        $(".area-range-slider").ionRangeSlider({
+            type: "double",
+            min: 15,
+            max: 100,
+            postfix: " sqm.",
+            max_postfix: "+"
+        });
+
+        jQuery(".bt-switch").bootstrapSwitch();
+
+        jQuery('.more-search').click(function () {
+            jQuery('.expand-link').slideToggle(400);
+        });
+
+    });
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

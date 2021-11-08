@@ -5,8 +5,6 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="author" content="SemiColonWeb"/>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
     <!-- Stylesheets
     ============================================= -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i|Roboto:300,400,500,700|Rubik:400,600&display=swap"
@@ -43,7 +41,16 @@
     <!-- Document Title
     ============================================= -->
     <title>Real Estate Demo | Canvas</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="js/main/bookingRoom.js"></script>
     <script src="js/main/index.js"></script>
+    <link rel="stylesheet" href="../css/fonts/fontawesome-free-5.15.4-web/css/all.min.css">
+
 
 </head>
 
@@ -167,7 +174,7 @@
                             <li class="menu-item"><a class="menu-link" href="demo-real-estate-services.html">
                                 <div>Services</div>
                             </a></li>
-                            <li class="menu-item"><a class="menu-link" href="demo-real-estate-listing.html">
+                            <li class="menu-item"><a class="menu-link" href="list.html">
                                 <div>Listing</div>
                             </a></li>
                             <li class="menu-item"><a class="menu-link" href="demo-real-estate-contact.html">
@@ -200,97 +207,26 @@
 
                         <div class="tab-container">
                             <div class="tab-content" id="tab-buy">
-                                <form action="#" method="post" class="mb-0">
+                                <form class="mb-0">
                                     <div class="row">
                                         <div class="col-md-6 col-12 bottommargin-sm">
-                                            <label for="">Choose Locations</label>
-                                            <select class="selectpicker form-control" multiple data-live-search="true"
-                                                    data-size="6" style="width:100%;">
-                                                <optgroup label="Alaskan/Hawaiian Time Zone">
-                                                    <option value="AK">Alaska</option>
-                                                    <option value="HI">Hawaii</option>
-                                                </optgroup>
-                                                <optgroup label="Pacific Time Zone">
-                                                    <option value="CA">California</option>
-                                                    <option value="NV">Nevada</option>
-                                                    <option value="OR">Oregon</option>
-                                                    <option value="WA">Washington</option>
-                                                </optgroup>
-                                                <optgroup label="Mountain Time Zone">
-                                                    <option value="AZ">Arizona</option>
-                                                    <option value="CO">Colorado</option>
-                                                    <option value="ID">Idaho</option>
-                                                    <option value="MT">Montana</option>
-                                                    <option value="NE">Nebraska</option>
-                                                    <option value="NM">New Mexico</option>
-                                                    <option value="ND">North Dakota</option>
-                                                    <option value="UT">Utah</option>
-                                                    <option value="WY">Wyoming</option>
-                                                </optgroup>
-                                                <optgroup label="Central Time Zone">
-                                                    <option value="AL">Alabama</option>
-                                                    <option value="AR">Arkansas</option>
-                                                    <option value="IL">Illinois</option>
-                                                    <option value="IA">Iowa</option>
-                                                    <option value="KS">Kansas</option>
-                                                    <option value="KY">Kentucky</option>
-                                                    <option value="LA">Louisiana</option>
-                                                    <option value="MN">Minnesota</option>
-                                                    <option value="MS">Mississippi</option>
-                                                    <option value="MO">Missouri</option>
-                                                    <option value="OK">Oklahoma</option>
-                                                    <option value="SD">South Dakota</option>
-                                                    <option value="TX">Texas</option>
-                                                    <option value="TN">Tennessee</option>
-                                                    <option value="WI">Wisconsin</option>
-                                                </optgroup>
-                                                <optgroup label="Eastern Time Zone">
-                                                    <option value="CT">Connecticut</option>
-                                                    <option value="DE">Delaware</option>
-                                                    <option value="FL">Florida</option>
-                                                    <option value="GA">Georgia</option>
-                                                    <option value="IN">Indiana</option>
-                                                    <option value="ME">Maine</option>
-                                                    <option value="MD">Maryland</option>
-                                                    <option value="MA">Massachusetts</option>
-                                                    <option value="MI">Michigan</option>
-                                                    <option value="NH">New Hampshire</option>
-                                                    <option value="NJ">New Jersey</option>
-                                                    <option value="NY">New York</option>
-                                                    <option value="NC">North Carolina</option>
-                                                    <option value="OH">Ohio</option>
-                                                    <option value="PA">Pennsylvania</option>
-                                                    <option value="RI">Rhode Island</option>
-                                                    <option value="SC">South Carolina</option>
-                                                    <option value="VT">Vermont</option>
-                                                    <option value="VA">Virginia</option>
-                                                    <option value="WV">West Virginia</option>
-                                                </optgroup>
+                                            <label>Choose Locations</label>
+                                            <select id="hotelLocation" class="selectpicker form-control showCity" data-live-search="true" style="width:100%;">
+
                                             </select>
                                         </div>
                                         <div class="col-md-6 col-12 bottommargin-sm">
-                                            <label for="">Property Type</label>
-                                            <select class="selectpicker form-control" data-size="6"
+                                            <label>Category</label>
+                                            <select id="hotelCategory" class="selectpicker form-control showCategory"
                                                     style="width:100%; line-height: 30px;">
-                                                <option value="Any">Any</option>
-                                                <optgroup label="Residential">
-                                                    <option value="Apartment">Apartment</option>
-                                                    <option value="Condo">Condo</option>
-                                                    <option value="Villa">Villa</option>
-                                                    <option value="Building">Building</option>
-                                                </optgroup>
-                                                <optgroup label="Commercial">
-                                                    <option value="Shop">Shop</option>
-                                                    <option value="Office">Office</option>
-                                                    <option value="Warehouse">Warehouse</option>
-                                                </optgroup>
+
                                             </select>
                                         </div>
                                         <div class="w-100"></div>
                                         <div class="col-6 bottommargin-sm">
-                                            <label for="">Beds</label>
-                                            <select class="selectpicker form-control" multiple data-size="6"
-                                                    data-placeholder="Any" style="width:100%; line-height: 30px;">
+                                            <label>Beds</label>
+                                            <select id="hotelBed" class="selectpicker form-control" style="width:100%; line-height: 30px;">
+                                                <option value="">Any</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -299,9 +235,9 @@
                                             </select>
                                         </div>
                                         <div class="col-6 bottommargin-sm">
-                                            <label for="">Baths</label>
-                                            <select class="selectpicker form-control" multiple data-size="6"
-                                                    data-placeholder="Any" style="width:100%; line-height: 30px;">
+                                            <label>Baths</label>
+                                            <select id="hotelBath" class="selectpicker form-control" style="width:100%; line-height: 30px;">
+                                                <option value="">Any</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -311,17 +247,17 @@
                                         </div>
                                         <div class="w-100"></div>
                                         <div class="col-md-6 col-12">
-                                            <label for="" style="margin-bottom: 20px !important;">Price Range</label>
-                                            <input class="price-range-slider"/>
+                                            <label style="margin-bottom: 20px !important;">Price Range</label>
+                                            <input id="priceHotel" class="price-range-slider"/>
                                         </div>
                                         <div class="w-100 d-block d-md-none bottommargin-sm"></div>
                                         <div class="col-md-6 col-12">
-                                            <label for="" style="margin-bottom: 20px !important;">Property Area</label>
-                                            <input class="area-range-slider"/>
+                                            <label style="margin-bottom: 20px !important;">Property Area</label>
+                                            <input id="areaHotel" class="area-range-slider"/>
                                         </div>
                                         <div class="col-md-12">
-                                            <button class="button button-3d button-rounded btn-block m-0"
-                                                    style="margin-top: 35px !important;">Search
+                                            <button class="button button-3d button-rounded btn-block m-0" type="button" style="margin-top: 35px !important;" onclick="searchRoomHotel(0)">
+                                                Search
                                             </button>
                                         </div>
                                     </div>
@@ -332,94 +268,23 @@
                                 <form action="#" method="post" class="mb-0">
                                     <div class="row">
                                         <div class="col-md-6 col-12 bottommargin-sm">
-                                            <label for="">Rental Locations</label>
-                                            <select class="selectpicker form-control" multiple data-live-search="true"
+                                            <label>Rental Locations</label>
+                                            <select id="homestayLocation" class="selectpicker form-control showCity" multiple data-live-search="true"
                                                     data-size="6" style="width:100%;">
-                                                <optgroup label="Alaskan/Hawaiian Time Zone">
-                                                    <option value="AK">Alaska</option>
-                                                    <option value="HI">Hawaii</option>
-                                                </optgroup>
-                                                <optgroup label="Pacific Time Zone">
-                                                    <option value="CA">California</option>
-                                                    <option value="NV">Nevada</option>
-                                                    <option value="OR">Oregon</option>
-                                                    <option value="WA">Washington</option>
-                                                </optgroup>
-                                                <optgroup label="Mountain Time Zone">
-                                                    <option value="AZ">Arizona</option>
-                                                    <option value="CO">Colorado</option>
-                                                    <option value="ID">Idaho</option>
-                                                    <option value="MT">Montana</option>
-                                                    <option value="NE">Nebraska</option>
-                                                    <option value="NM">New Mexico</option>
-                                                    <option value="ND">North Dakota</option>
-                                                    <option value="UT">Utah</option>
-                                                    <option value="WY">Wyoming</option>
-                                                </optgroup>
-                                                <optgroup label="Central Time Zone">
-                                                    <option value="AL">Alabama</option>
-                                                    <option value="AR">Arkansas</option>
-                                                    <option value="IL">Illinois</option>
-                                                    <option value="IA">Iowa</option>
-                                                    <option value="KS">Kansas</option>
-                                                    <option value="KY">Kentucky</option>
-                                                    <option value="LA">Louisiana</option>
-                                                    <option value="MN">Minnesota</option>
-                                                    <option value="MS">Mississippi</option>
-                                                    <option value="MO">Missouri</option>
-                                                    <option value="OK">Oklahoma</option>
-                                                    <option value="SD">South Dakota</option>
-                                                    <option value="TX">Texas</option>
-                                                    <option value="TN">Tennessee</option>
-                                                    <option value="WI">Wisconsin</option>
-                                                </optgroup>
-                                                <optgroup label="Eastern Time Zone">
-                                                    <option value="CT">Connecticut</option>
-                                                    <option value="DE">Delaware</option>
-                                                    <option value="FL">Florida</option>
-                                                    <option value="GA">Georgia</option>
-                                                    <option value="IN">Indiana</option>
-                                                    <option value="ME">Maine</option>
-                                                    <option value="MD">Maryland</option>
-                                                    <option value="MA">Massachusetts</option>
-                                                    <option value="MI">Michigan</option>
-                                                    <option value="NH">New Hampshire</option>
-                                                    <option value="NJ">New Jersey</option>
-                                                    <option value="NY">New York</option>
-                                                    <option value="NC">North Carolina</option>
-                                                    <option value="OH">Ohio</option>
-                                                    <option value="PA">Pennsylvania</option>
-                                                    <option value="RI">Rhode Island</option>
-                                                    <option value="SC">South Carolina</option>
-                                                    <option value="VT">Vermont</option>
-                                                    <option value="VA">Virginia</option>
-                                                    <option value="WV">West Virginia</option>
-                                                </optgroup>
+
                                             </select>
                                         </div>
                                         <div class="col-md-6 col-12 bottommargin-sm">
-                                            <label for="">Property Type</label>
-                                            <select class="selectpicker form-control" data-size="6"
-                                                    style="width:100%; line-height: 30px;">
-                                                <option value="Any">Any</option>
-                                                <optgroup label="Residential">
-                                                    <option value="Apartment">Apartment</option>
-                                                    <option value="Condo">Condo</option>
-                                                    <option value="Villa">Villa</option>
-                                                    <option value="Building">Building</option>
-                                                </optgroup>
-                                                <optgroup label="Commercial">
-                                                    <option value="Shop">Shop</option>
-                                                    <option value="Office">Office</option>
-                                                    <option value="Warehouse">Warehouse</option>
-                                                </optgroup>
+                                            <label>Category</label>
+                                            <select id="homestayCategory" class="selectpicker form-control showCategory" style="width:100%; line-height: 30px;">
+
                                             </select>
                                         </div>
                                         <div class="w-100"></div>
                                         <div class="col-6 bottommargin-sm">
-                                            <label for="">Beds</label>
-                                            <select class="selectpicker form-control" multiple data-size="6"
-                                                    data-placeholder="Any" style="width:100%; line-height: 30px;">
+                                            <label>Beds</label>
+                                            <select id="homestayBed" class="selectpicker form-control" style="width:100%; line-height: 30px;">
+                                                <option value="">Any</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -428,9 +293,9 @@
                                             </select>
                                         </div>
                                         <div class="col-6 bottommargin-sm">
-                                            <label for="">Baths</label>
-                                            <select class="selectpicker form-control" multiple data-size="6"
-                                                    data-placeholder="Any" style="width:100%; line-height: 30px;">
+                                            <label >Baths</label>
+                                            <select id="homestayBath" class="selectpicker form-control" style="width:100%; line-height: 30px;">
+                                                <option value="">Any</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -440,17 +305,17 @@
                                         </div>
                                         <div class="w-100"></div>
                                         <div class="col-md-6 col-12">
-                                            <label for="" style="margin-bottom: 20px !important;">Price Range</label>
-                                            <input class="price-range-slider"/>
+                                            <label style="margin-bottom: 20px !important;">Price Range</label>
+                                            <input id="priceHomestay" class="price-range-slider"/>
                                         </div>
                                         <div class="w-100 d-block d-md-none bottommargin-sm"></div>
                                         <div class="col-md-6 col-12">
-                                            <label for="" style="margin-bottom: 20px !important;">Property Area</label>
-                                            <input class="area-range-slider"/>
+                                            <label style="margin-bottom: 20px !important;">Property Area</label>
+                                            <input id="areaHomestay" class="area-range-slider"/>
                                         </div>
                                         <div class="col-md-12">
-                                            <button class="button button-3d button-rounded btn-block m-0"
-                                                    style="margin-top: 35px !important;">Search
+                                            <button class="button button-3d button-rounded btn-block m-0" style="margin-top: 35px !important;" onclick="searchRoomArea()">
+                                                Search
                                             </button>
                                         </div>
                                     </div>
@@ -566,130 +431,9 @@
                        class="button button-small button-rounded button-border button-border-thin font-weight-medium m-0"
                        style="position: absolute; top: 7px; right: 0;">Check All</a>
 
-                    <div class="real-estate owl-carousel image-carousel carousel-widget bottommargin-lg"
+                    <div id="showTopRoomRating" class="real-estate owl-carousel image-carousel carousel-widget bottommargin-lg"
                          data-margin="10" data-nav="true" data-loop="true" data-pagi="false" data-items-xs="1"
                          data-items-sm="1" data-items-md="2" data-items-lg="3" data-items-xl="3">
-
-                        <div class="oc-item">
-                            <div class="real-estate-item">
-                                <div class="real-estate-item-image">
-                                    <div class="badge badge-danger bg-color2">For Sale</div>
-                                    <a href="#">
-                                        <img src="demos/real-estate/images/items/1.jpg" alt="Image 1">
-                                    </a>
-                                    <div class="real-estate-item-price">
-                                        $1.2m<span>Leasehold</span>
-                                    </div>
-                                    <div class="real-estate-item-info clearfix">
-                                        <a href="#"><i class="icon-line-stack-2"></i></a>
-                                        <a href="#"><i class="icon-line-heart"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="real-estate-item-desc">
-                                    <h3><a href="#">3 Bedroom Villa</a></h3>
-                                    <span>Seminyak Area</span>
-
-                                    <a href="#" class="real-estate-item-link"><i class="icon-info"></i></a>
-
-                                    <div class="line" style="margin-top: 15px; margin-bottom: 15px;"></div>
-
-                                    <div class="real-estate-item-features font-weight-medium font-primary clearfix">
-                                        <div class="row no-gutters">
-                                            <div class="col-lg-4 p-0">Beds: <span class="color">3</span></div>
-                                            <div class="col-lg-4 p-0">Baths: <span class="color">3</span></div>
-                                            <div class="col-lg-4 p-0">Area: <span class="color">150 sqm</span></div>
-                                            <div class="col-lg-4 p-0">Pool: <span class="text-success"><i
-                                                    class="icon-check-sign"></i></span></div>
-                                            <div class="col-lg-4 p-0">Internet: <span class="text-success"><i
-                                                    class="icon-check-sign"></i></span></div>
-                                            <div class="col-lg-4 p-0">Cleaning: <span class="text-danger"><i
-                                                    class="icon-minus-sign-alt"></i></span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="oc-item">
-                            <div class="real-estate-item">
-                                <div class="real-estate-item-image">
-                                    <div class="badge badge-success">Hot Deal</div>
-                                    <a href="#">
-                                        <img src="demos/real-estate/images/items/2.jpg" alt="Image 2">
-                                    </a>
-                                    <div class="real-estate-item-price">
-                                        $200,000<span>bi-annually</span>
-                                    </div>
-                                    <div class="real-estate-item-info clearfix">
-                                        <a href="#"><i class="icon-line-stack-2"></i></a>
-                                        <a href="#"><i class="icon-line-heart"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="real-estate-item-desc">
-                                    <h3><a href="#">3 Bedroom Villa</a></h3>
-                                    <span>Seminyak Area</span>
-
-                                    <a href="#" class="real-estate-item-link"><i class="icon-info"></i></a>
-
-                                    <div class="line" style="margin-top: 15px; margin-bottom: 15px;"></div>
-
-                                    <div class="real-estate-item-features font-weight-medium clearfix">
-                                        <div class="row no-gutters">
-                                            <div class="col-lg-4 p-0">Beds: <span class="color">3</span></div>
-                                            <div class="col-lg-4 p-0">Baths: <span class="color">3</span></div>
-                                            <div class="col-lg-4 p-0">Area: <span class="color">150 sqm</span></div>
-                                            <div class="col-lg-4 p-0">Pool: <span class="text-success"><i
-                                                    class="icon-check-sign"></i></span></div>
-                                            <div class="col-lg-4 p-0">Internet: <span class="text-success"><i
-                                                    class="icon-check-sign"></i></span></div>
-                                            <div class="col-lg-4 p-0">Cleaning: <span class="text-success"><i
-                                                    class="icon-check-sign"></i></span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="oc-item">
-                            <div class="real-estate-item">
-                                <div class="real-estate-item-image">
-                                    <div class="badge badge-danger">Long Term Rental</div>
-                                    <a href="#">
-                                        <img src="demos/real-estate/images/items/4.jpg" alt="Image 3">
-                                    </a>
-                                    <div class="real-estate-item-price">
-                                        $1600<span>per month</span>
-                                    </div>
-                                    <div class="real-estate-item-info clearfix">
-                                        <a href="#"><i class="icon-line-stack-2"></i></a>
-                                        <a href="#"><i class="icon-line-heart"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="real-estate-item-desc">
-                                    <h3><a href="#">3 Bedroom Villa</a></h3>
-                                    <span>Seminyak Area</span>
-
-                                    <a href="#" class="real-estate-item-link"><i class="icon-info"></i></a>
-
-                                    <div class="line" style="margin-top: 15px; margin-bottom: 15px;"></div>
-
-                                    <div class="real-estate-item-features font-weight-medium clearfix">
-                                        <div class="row no-gutters">
-                                            <div class="col-lg-4 p-0">Beds: <span class="color">3</span></div>
-                                            <div class="col-lg-4 p-0">Baths: <span class="color">3</span></div>
-                                            <div class="col-lg-4 p-0">Area: <span class="color">150 sqm</span></div>
-                                            <div class="col-lg-4 p-0">Pool: <span class="text-success"><i
-                                                    class="icon-check-sign"></i></span></div>
-                                            <div class="col-lg-4 p-0">Internet: <span class="text-success"><i
-                                                    class="icon-check-sign"></i></span></div>
-                                            <div class="col-lg-4 p-0">Cleaning: <span class="text-success"><i
-                                                    class="icon-check-sign"></i></span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
@@ -1127,6 +871,100 @@
 ============================================= -->
 <div id="gotoTop" class="icon-angle-up"></div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">HOMESTAY</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div id="showListImageRoom" class="carousel-inner">
+
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex">
+                    <div class="col-8">
+                        <h3 id="roomCityName" style="color: #1abc9c"></h3>
+                        <div style="color: #1abc9c">
+                            <span class="mr-2">
+                                <i class="far fa-star"></i>
+                                Rating:
+                            </span>
+                            <span id="roomRating"></span>
+                            <p style="color: #000">
+                                reviewed by <span id="roomRatingCount"></span> travelers</p>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <h3 style="text-align: right; opacity: 0.7">Price</h3>
+                        <h2 id="priceRoom" style="text-align: right"></h2>
+                        <p style="text-align: right; color: #1abc9c">/Room/Night</p>
+                        <p style="text-align: right">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                    style="width: 100%; background-color: #1abc9c; border: none" onclick="showBookingRoom()">
+                                Book room
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal create Booking Room-->
+<div class="modal fade" id="bookingRoom" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <input id="roomId" type="text" hidden>
+    <div class="modal-dialog modal-xl modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">BOOKING ROOM</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container row">
+                    <div class="mb-3 col-6">
+                        <label class="form-label">Number of adults</label>
+                        <input type="number" class="form-control" id="adults">
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label class="form-label">Number of children</label>
+                        <input type="number" class="form-control" id="children">
+                    </div>
+                </div>
+                <div class="container row">
+                    <div class="mb-3 col-6">
+                        <label class="form-label">Check in</label>
+                        <input type="date" class="form-control" id="checkin">
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label class="form-label">Check out</label>
+                        <input type="date" class="form-control" id="checkout">
+                    </div>
+                </div>
+                <button id="buttonCreateBookingRoom" type="submit" class="btn disabled" style="width: 100%; background-color: #1abc9c" data-bs-dismiss="modal" onclick="createBookingRoom()">Booking</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- JavaScripts
 ============================================= -->
 <script src="js/jquery.js"></script>
@@ -1160,10 +998,8 @@
 
         $(".area-range-slider").ionRangeSlider({
             type: "double",
-            min: 50,
-            max: 20000,
-            from: 50,
-            to: 20000,
+            min: 10,
+            max: 100,
             postfix: " sqm.",
             max_postfix: "+"
         });
@@ -1172,7 +1008,43 @@
 
     });
 
+    function searchRoomHotel(page) {
+        let city = $("#hotelLocation").val();
+        let category = $("#hotelCategory").val();
+        let beg = $("#hotelBed").val();
+        let bath = $("#hotelBath").val();
+        let priceLow = $('#priceHotel').data().from;
+        let priceHigh = $('#priceHotel').data().to;
+        let areaLow = $("#areaHotel").data().from;
+        let areaHigh = $("#areaHotel").data().to;
+
+        $.ajax({
+            url: `${urlRoom}findRoom?cityId=${city}
+        &categoryId=${category}
+        &minAreaRoom=${areaLow}
+        &maxAreaRoom=${areaHigh}
+        &bedsRoom=${beg}
+        &minPriceRoom=${priceLow}
+        &maxPriceRoom=${priceHigh}
+        &bathsRoom=${bath}&page=${page}`,
+            type: "GET",
+            headers: {
+                "Authorization": "Bearer " + user.token,
+                "Accept": "application/json",
+                "Content-type": "application/json"
+            },
+            success: function (data) {
+                localStorage.setItem("listRoom", JSON.stringify(data));
+                window.location.href = "list.html";
+            }
+        });
+    }
+
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>
