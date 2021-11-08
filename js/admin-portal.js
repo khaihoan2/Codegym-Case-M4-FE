@@ -438,9 +438,10 @@ $(document).ready(function () {
         $("#page-content").html(dashboardPageContent);
     })
 
-    // Show content of table page
+    // Show content of user-table page
     $("#users-nav-link").click(function () {
         $("#page-content").html(userTablePageContent);
         getAllUser();
     })
 });
+

@@ -2,7 +2,7 @@ let userApi = "http://localhost:8080/api/users/";
 
 let uploadingFileApi = "http://localhost:8080/api/uploadingFiles/";
 
-let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+let currentUser = JSON.parse(localStorage.getItem("user"));
 
 let userTablePageContent =
     `<!-- Content Wrapper. Contains page content -->
@@ -37,19 +37,22 @@ let userTablePageContent =
                         <table class="table table-striped projects">
                             <thead>
                             <tr>
-                                <th style="width: 5%">
+                                <th style="width: 10%">
                                     #
                                 </th>
-                                <th style="width: 30%">
+                                <th style="width: 20%">
                                     Name
                                 </th>
-                                <th style="width: 30%">
+                                <th style="width: 20%">
+                                    Username
+                                </th>
+                                <th style="width: 20%">
                                     Email
                                 </th>
                                 <th>
                                     Phone
                                 </th>
-                                <th style="width: 20%">
+                                <th style="width: 30%">
                                 </th>
                             </tr>
                             </thead>
@@ -69,19 +72,17 @@ let userTablePageContent =
         </div>
         <!-- /.content-wrapper -->`
 
-
-
 function getAllUser() {
     $.ajax({
         url: userApi,
         type: 'GET',
         headers: {
-            'Authorization': 'Bearer ' + currentUser.jwt,
+            'Authorization': 'Bearer ' + currentUser.token,
         },
         success: function (data) {
             let content = "";
-            for (let i = 0; i < data.length; i++) {
-                content += getUser(data[i]);
+            for (let i = 0; i < data.content.length; i++) {
+                content += getUser(data.content[i]);
             }
             $("#user-table-body").html(content);
         }
@@ -95,26 +96,40 @@ function getUser(user) {
     return `<tr>
             <td>${user.id}</td>
             <td>${user.name}</td>
+            <td>${user.username}</td>
             <td>${user.email}</td>
             <td>${user.phone}</td>
             <td class="project-actions text-right">
-                <a class="btn btn-primary btn-sm" id="btn-user-view">
+                <a class="btn btn-primary btn-sm" id="btn-user-view" onclick="showViewForm(${user.id})">
                     <i class="fas fa-folder">
                     </i>
                     View
                 </a>
-                <a class="btn btn-info btn-sm" id="btn-edit">
+                <a class="btn btn-info btn-sm" id="btn-edit" onclick="showEditForm(${user.id})">
                     <i class="fas fa-pencil-alt">
                     </i>
                     Edit
                 </a>
-                <a class="btn btn-danger btn-sm" id="btn-delete">
+                <a class="btn btn-danger btn-sm" id="btn-delete" onclick="deleteUser(${user.id})">
                     <i class="fas fa-trash">
                     </i>
                     Delete
                 </a>
             </td>
         </tr>`;
+}
+
+function showViewForm(id) {
+    $.getJSON(userApi + id, {}, function (user) {
+        let myModal = new bootstrap.Modal(document.getElementById("modal-user-view"));
+        myModal.show();
+        $("#nameInfo").text(user.name);
+        $("#phoneInfo").text(user.phone);
+        $("#usernameInfo").text(user.username);
+        $("#emailInfo").text(user.email);
+        $("#addressInfo").text(user.address);
+        $("#avatarInfo").text("");
+    })
 }
 
 function showCreateForm() {
@@ -140,42 +155,70 @@ function showEditForm(id) {
         $("#password").val(user.password);
         $("#email").val(user.email);
         $("#address").val(user.address);
-        $("#multipartFiles").val("");
-        $("#checkCreateOrEdit").val("create");
+        $("#multipartFiles").val("some image here");
+        $("#checkCreateOrEdit").val("");
         myModal.show();
     })
+}
 
 //--------------Create and Edit-------------//
-    function createAndEditUser(type, url) {
-        let name = $("#name").val();
-        let phone = $("#phone").val();
-        let username = $("#username").val();
-        let password = $("#password").val();
-        let email = $("#email").val();
-        let address = $("#address").val();
-    }
+function saveUser(type, url) {
+    let name = $("#name").val();
+    let phone = $("#phone").val();
+    let username = $("#username").val();
+    let password = $("#password").val();
+    let email = $("#email").val();
+    let address = $("#address").val();
+    // let avatar = $("#avatar").val(). ;
 
+    let newUser = {
+        name: name,
+        phone: phone,
+        username: username,
+        password: password,
+        email: email,
+        address: address
+    }
     $.ajax({
         url: url,
         type: type,
         headers: {
+            "Authorization": "Bearer " + currentUser.token,
             "Accept": "application/json",
             "Content-type": "application/json"
         },
-        data: JSON.stringify(user),
+        data: JSON.stringify(newUser),
         success: function (result) {
 
         }
     })
 }
+
+
 //-------------------Delete------------------//
-function showDeleteForm(id) {
+function deleteUser(id) {
     $.ajax({
         url: userApi + id,
         type: "DELETE",
+        headers: {
+            'Authorization': 'Bearer ' + currentUser.token,
+        },
         success: function (result) {
+            getAllUser();
+        }
+    }).fail(function () {
 
+    })
+}
+
+$(document).ready(function () {
+    // Submit form to create new user
+    $("#btn-save-user").click(function () {
+        let idChecker = $("#idChecker").val();
+        if (idChecker === "") {
+            saveUser("POST", userApi);
+        } else {
+            saveUser("PUT", userApi + idChecker)
         }
     })
-
-}
+})

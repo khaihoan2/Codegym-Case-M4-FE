@@ -967,7 +967,7 @@
 
 <!-- JavaScripts
 ============================================= -->
-<script src="js/jquery.js"></script>
+<script src="js/jquery.js"></>
 <script src="js/plugins.min.js"></script>
 <script src="https://maps.google.com/maps/api/js?key=YOUR-API-KEY"></script>
 
@@ -1046,5 +1046,12 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
+<script>
+    $(document).ready(function () {
+        $('#loginAndRegister').click(function () {
+            window.location.href = '/user/login/login.html';
+        })
+    })
+</script>
 </body>
 </html>

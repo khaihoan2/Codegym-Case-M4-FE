@@ -201,8 +201,8 @@
                 <h5 class="modal-title">Add new user</h5>
             </div>
             <div class="modal-body">
-                <form id="userForm">
-                    <input type="hidden" id="checkCreateOrEdit">
+                <form>
+                    <input type="hidden" id="idChecker">
                     <div class="row">
                         <div class="col-6">
                             <div class="mb-3">
@@ -237,19 +237,44 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Address:</label>
-                        <input type="password" name="name" class="form-control" id="address" required>
+                        <input type="text" name="name" class="form-control" id="address" required>
                     </div>
                     <div>
-                        <label for="multipartFiles">Avatar:</label>
-                        <input id="multipartFiles" name="multipartFiles" type="file">
+                        <label for="avatar">Avatar:</label>
+                        <input id="avatar" name="avatar" type="file">
+<!--                        <img src="" alt="">-->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
-                        <button id="save-user" type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                        <button id="btn-save-user" type="button" class="btn btn-primary" data-bs-dismiss="modal">
                             Save changes
                         </button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal view-->
+<div class="modal fade" id="modal-user-view" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">User's information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Name: <span id="nameInfo"></span></p>
+                <p>Phone: <span id="phoneInfo"></span></p>
+                <p>Username: <span id="usernameInfo"></span></p>
+                <p>Email: <span id="emailInfo"></span></p>
+                <p>Address: <span id="addressInfo"></span></p>
+                <p>Avatar: <span id="avatarInfo"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -271,7 +296,7 @@
 <script src="plugins/chart.js/Chart.min.js"></script>
 
 <!-- AdminLTE dashboard demo -->
-<script src="dist/js/pages/dashboard2.js"></script>
+<!--<script src="dist/js/pages/dashboard2.js"></script>-->
 
 <!-- Page specific script -->
 <script src="js/ui.js"></script>

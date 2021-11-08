@@ -30,7 +30,7 @@
                 success: function (data) {
                     localStorage.setItem("user", JSON.stringify(data));
                     for (let i = 0; i < data.roles.length; i++) {
-                        if (data.roles[i].authority == "ROLE_ADMIN") {
+                        if (data.roles[i].authority === "ROLE_ADMIN") {
                             window.location.href = "../index.html";
                             return;
                         } else {
