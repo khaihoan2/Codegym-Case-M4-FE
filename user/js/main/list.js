@@ -10,7 +10,7 @@ let urlReview = `http://localhost:8080/api/reviews/`
 
 let urlBooking = `http://localhost:8080/api/bookings/`
 
-let page = 0;
+let pageNumber = 0;
 
 let user = JSON.parse(localStorage.getItem("user"));
 
@@ -173,17 +173,19 @@ function searchRoomHotel(page) {
             }
             showListRoom();
         }
+    }).fail(function () {
+        pageNumber = 0;
     });
 }
 
 $(document).ready(function(){
     $("#footer").hide();
     $(window).scroll(function(){
-        console.log(page);
+        console.log(pageNumber);
         console.log($(window).scrollTop());
         console.log($(document).height()-$(window).height());
-        if($(window).scrollTop() > $(document).height()-$(window).height()){
-            searchRoomHotel(page += 1);
+        if($(window).scrollTop() >= $(document).height()-$(window).height() - 1){
+            searchRoomHotel(pageNumber += 1);
         }
     });
 });
