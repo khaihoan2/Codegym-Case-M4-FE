@@ -25,8 +25,9 @@ let userTablePageContent =
                 <div class="card">
                     <div class="card-header">
                     
-                    <button type="button" class="btn btn-success btn-sm" id="btn-create"
-                    data-toggle="modal" data-target="#modal-user-create">
+                    <button type="button" class="btn btn-success btn-sm" id="btn-create" onclick="showCreateForm()"
+<!--                    data-target="#modal-user-create"-->
+                    >
                    <i class="fas fa-plus-circle"></i> Add new
                 </button>
                 <div class="card-tools">
@@ -133,7 +134,8 @@ function showViewForm(id) {
 }
 
 function showCreateForm() {
-    let myModal = new bootstrap.Modal($("#modal-user-create"));
+    let myModal = new bootstrap.Modal(document.getElementById("modal-user-create"));
+    $("#idChecker").val("");
     $("#name").val("");
     $("#phone").val("");
     $("#username").val("");
@@ -141,22 +143,19 @@ function showCreateForm() {
     $("#email").val("");
     $("#address").val("");
     $("#multipartFiles").val("");
-    $("#checkCreateOrEdit").val("create");
     myModal.show();
 }
 
 function showEditForm(id) {
-    let myModal = new bootstrap.Modal($('#modal-user-create'));
-    $("#checkCreateOrEdit").val(id);
+    let myModal = new bootstrap.Modal(document.getElementById("modal-user-create"));
+    $("#idChecker").val(id);
     $.getJSON(userApi + id, {}, function (user) {
         $("#name").val(user.name);
         $("#phone").val(user.phone);
         $("#username").val(user.username);
-        $("#password").val(user.password);
+        $("#password").val("");
         $("#email").val(user.email);
         $("#address").val(user.address);
-        $("#multipartFiles").val("some image here");
-        $("#checkCreateOrEdit").val("");
         myModal.show();
     })
 }
@@ -189,7 +188,7 @@ function saveUser(type, url) {
         },
         data: JSON.stringify(newUser),
         success: function (result) {
-
+            getAllUser();
         }
     })
 }

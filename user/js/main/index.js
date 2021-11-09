@@ -35,7 +35,7 @@ $(document).ready(function () {
 })
 
 function showLoginAndRegister() {
-    window.location.href = "http://localhost:63343/Codegym-Case-M4-FE/user/login/login.html";
+    window.location.href = "/user/login/login.html";
 }
 
 
@@ -184,7 +184,7 @@ function roomInfo(id) {
             $("#roomId").val(id);
             let content = "";
             for (let i = 0; i < data.length; i++) {
-                if (i == 0) {
+                if (i === 0) {
                     content += `<div class="carousel-item active">
                     <img src="demos/real-estate/images/items/${data[i].name}" class="d-block w-100">
                     </div>`
@@ -195,7 +195,7 @@ function roomInfo(id) {
                 }
                 $("#roomCityName").html(`<i class="fas fa-caravan mr-2" style="color: #1abc9c"></i>${data[i].room.city.name}`);
                 $("#priceRoom").html(data[i].room.price)
-            };
+            }
             $("#showListImageRoom").html(content);
             $.ajax({
                 url: urlReview + `rating/${id}`,
@@ -225,12 +225,12 @@ $(document).ready(function(){
         let adults = $("#adults").val();
         let checkIn = $("#checkin").val();
         let checkOut = $("#checkout").val();
-        if (adults == "" || adults < 0) {
+        if (adults === "" || adults < 0) {
             $(this).css("border-color", "red");
         } else {
             $(this).css("border-color", "#ccc");
         }
-        if (adults != "" && adults > 0 && checkIn != "" && checkOut != "") {
+        if (adults !== "" && adults > 0 && checkIn !== "" && checkOut !== "") {
             $("#buttonCreateBookingRoom").removeClass("disabled");
         }
     });
@@ -238,12 +238,12 @@ $(document).ready(function(){
         let adults = $("#adults").val();
         let checkIn = $("#checkin").val();
         let checkOut = $("#checkout").val();
-        if (checkIn == "") {
+        if (checkIn === "") {
             $(this).css("border-color", "red");
         } else {
             $(this).css("border-color", "#ccc");
         }
-        if (adults != "" && adults > 0 && checkIn != "" && checkOut != "") {
+        if (adults !== "" && adults > 0 && checkIn !== "" && checkOut !== "") {
             $("#buttonCreateBookingRoom").removeClass("disabled");
         }
     });
@@ -251,12 +251,12 @@ $(document).ready(function(){
         let adults = $("#adults").val();
         let checkIn = $("#checkin").val();
         let checkOut = $("#checkout").val();
-        if (checkOut == "") {
+        if (checkOut === "") {
             $(this).css("border-color", "red");
         } else {
             $(this).css("border-color", "#ccc");
         }
-        if (adults != "" && adults > 0 && checkIn != "" && checkOut != "") {
+        if (adults !== "" && adults > 0 && checkIn !== "" && checkOut !== "") {
             $("#buttonCreateBookingRoom").removeClass("disabled");
         }
     });

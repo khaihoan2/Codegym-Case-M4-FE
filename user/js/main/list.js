@@ -36,7 +36,7 @@ $(document).ready(function () {
 })
 
 function showLoginAndRegister() {
-    window.location.href = "http://localhost:63343/Codegym-Case-M4-FE/user/login/login.html";
+    window.location.href = "/user/login/login.html";
 }
 
 function showImgAvartar() {
