@@ -210,21 +210,21 @@
                                     <div class="row">
                                         <div class="col-md-6 col-12 bottommargin-sm">
                                             <label>Choose Locations</label>
-                                            <select id="hotelLocation" class="selectpicker form-control showCity" data-live-search="true" style="width:100%;">
-
+                                            <select id="hotelLocation" class="form-select showCity"
+                                                    style="width:100%; line-height: 22px;">
                                             </select>
                                         </div>
                                         <div class="col-md-6 col-12 bottommargin-sm">
                                             <label>Category</label>
-                                            <select id="hotelCategory" class="selectpicker form-control showCategory"
-                                                    style="width:100%; line-height: 30px;">
-
+                                            <select id="hotelCategory" class="form-select showCategory"
+                                                    style="width:100%; line-height: 22px;">
                                             </select>
                                         </div>
                                         <div class="w-100"></div>
                                         <div class="col-6 bottommargin-sm">
                                             <label>Beds</label>
-                                            <select id="hotelBed" class="selectpicker form-control" style="width:100%; line-height: 30px;">
+                                            <select id="hotelBed" class="form-select"
+                                                    style="width:100%; line-height: 22px;">
                                                 <option value="">Any</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -235,7 +235,8 @@
                                         </div>
                                         <div class="col-6 bottommargin-sm">
                                             <label>Baths</label>
-                                            <select id="hotelBath" class="selectpicker form-control" style="width:100%; line-height: 30px;">
+                                            <select id="hotelBath" class="form-select"
+                                                    style="width:100%; line-height: 22px;">
                                                 <option value="">Any</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -255,7 +256,8 @@
                                             <input id="areaHotel" class="area-range-slider"/>
                                         </div>
                                         <div class="col-md-12">
-                                            <button class="button button-3d button-rounded btn-block m-0" type="button" style="margin-top: 35px !important;" onclick="searchRoomHotel(0)">
+                                            <button class="button button-3d button-rounded btn-block m-0" type="button"
+                                                    style="margin-top: 35px !important;" onclick="searchRoomHotel(0)">
                                                 Search
                                             </button>
                                         </div>
@@ -268,21 +270,24 @@
                                     <div class="row">
                                         <div class="col-md-6 col-12 bottommargin-sm">
                                             <label>Rental Locations</label>
-                                            <select id="homestayLocation" class="selectpicker form-control showCity" multiple data-live-search="true"
+                                            <select id="homestayLocation" class="selectpicker form-control showCity"
+                                                    multiple data-live-search="true"
                                                     data-size="6" style="width:100%;">
 
                                             </select>
                                         </div>
                                         <div class="col-md-6 col-12 bottommargin-sm">
                                             <label>Category</label>
-                                            <select id="homestayCategory" class="selectpicker form-control showCategory" style="width:100%; line-height: 30px;">
+                                            <select id="homestayCategory" class="selectpicker form-control showCategory"
+                                                    style="width:100%; line-height: 30px;">
 
                                             </select>
                                         </div>
                                         <div class="w-100"></div>
                                         <div class="col-6 bottommargin-sm">
                                             <label>Beds</label>
-                                            <select id="homestayBed" class="selectpicker form-control" style="width:100%; line-height: 30px;">
+                                            <select id="homestayBed" class="selectpicker form-control"
+                                                    style="width:100%; line-height: 30px;">
                                                 <option value="">Any</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -292,8 +297,9 @@
                                             </select>
                                         </div>
                                         <div class="col-6 bottommargin-sm">
-                                            <label >Baths</label>
-                                            <select id="homestayBath" class="selectpicker form-control" style="width:100%; line-height: 30px;">
+                                            <label>Baths</label>
+                                            <select id="homestayBath" class="selectpicker form-control"
+                                                    style="width:100%; line-height: 30px;">
                                                 <option value="">Any</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -313,7 +319,8 @@
                                             <input id="areaHomestay" class="area-range-slider"/>
                                         </div>
                                         <div class="col-md-12">
-                                            <button class="button button-3d button-rounded btn-block m-0" style="margin-top: 35px !important;" onclick="searchRoomArea()">
+                                            <button class="button button-3d button-rounded btn-block m-0"
+                                                    style="margin-top: 35px !important;" onclick="searchRoomArea()">
                                                 Search
                                             </button>
                                         </div>
@@ -430,7 +437,8 @@
                        class="button button-small button-rounded button-border button-border-thin font-weight-medium m-0"
                        style="position: absolute; top: 7px; right: 0;">Check All</a>
 
-                    <div id="showTopRoomRating" class="real-estate owl-carousel image-carousel carousel-widget bottommargin-lg"
+                    <div id="showTopRoomRating"
+                         class="real-estate owl-carousel image-carousel carousel-widget bottommargin-lg"
                          data-margin="10" data-nav="true" data-loop="true" data-pagi="false" data-items-xs="1"
                          data-items-sm="1" data-items-md="2" data-items-lg="3" data-items-xl="3">
 
@@ -917,7 +925,8 @@
                         <p style="text-align: right; color: #1abc9c">/Room/Night</p>
                         <p style="text-align: right">
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                                    style="width: 100%; background-color: #1abc9c; border: none" onclick="showBookingRoom()">
+                                    style="width: 100%; background-color: #1abc9c; border: none"
+                                    onclick="showBookingRoom()">
                                 Book room
                             </button>
                         </p>
@@ -958,7 +967,10 @@
                         <input type="date" class="form-control" id="checkout">
                     </div>
                 </div>
-                <button id="buttonCreateBookingRoom" type="submit" class="btn disabled" style="width: 100%; background-color: #1abc9c" data-bs-dismiss="modal" onclick="createBookingRoom()">Booking</button>
+                <button id="buttonCreateBookingRoom" type="submit" class="btn disabled"
+                        style="width: 100%; background-color: #1abc9c" data-bs-dismiss="modal"
+                        onclick="createBookingRoom()">Booking
+                </button>
             </div>
         </div>
     </div>
